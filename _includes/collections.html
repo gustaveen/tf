@@ -1,0 +1,17 @@
+
+{% for collection in site.blogg %}
+
+  {% assign name = collection.label %}
+   <section class="content__posts">
+
+    {% for page in site.blogg %}
+    <article class="posts__post">
+      <h2 class="post__title"><a class="w-inline-block link" href="{{ page.url }}">{{ page.title }}</a></h2>
+      <div class="post__body">{{ page.content | markdownify }}</div>
+
+    </article>
+    {% endfor %}
+
+  </section>
+
+{% endfor %}

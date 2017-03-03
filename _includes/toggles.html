@@ -1,0 +1,87 @@
+<div class="content__toggles">
+
+{% for page in pages %}
+
+<div class="toggles__toggle">
+  {% unless page.pages.slideshow %}
+  
+  <div class="toggle__head" data-ix="toggle-body">
+    <h2 class="toggle__title">{{page.title}}</h2>
+  </div>
+  <div class="toggle__body" data-ix="toogle-body-init">
+    <div class="toggle__body__inner">
+      <div class="w-row row">
+        <div class="w-col w-col-6 w-col-stack">
+          <div class="toggle__introcopy in-feature">{{page.body}}</div>
+        </div>
+        <div class="w-col w-col-6 w-col-stack"></div>
+      </div>
+    </div>
+  </div>
+
+  {% else %}
+  <div class="toggle__head">
+    <div class="w-row row">
+      <div class="w-col w-col-6">
+        <a href="{{page.url}}"><h2 class="toggle__title toggle__title--in-extended">{{page.title}}</h2></a>
+        <div class="toggle__introcopy in-feature">{{page.body}}</div>
+      </div>
+
+
+      <div class="w-col w-col-6 w-clearfix">
+        <!-- If slideshow exist -->
+        
+
+        <div class="w-slider slider slider__in-toggle" data-animation="slide" data-duration="500" data-infinite="1">
+          <div class="w-slider-mask">
+            
+            {% for asset in page.pages.slideshow.assets %}
+              {% if asset.type == 'image' %}
+                <div class="w-slide">
+                  <img class="slider__img" src="{{asset.url}}" width="400" height="300" alt="">
+                </div>
+              {% endif %}
+            {% endfor %}
+
+          </div>
+          <div class="w-slider-arrow-left">
+            <div class="w-icon-slider-left"></div>
+          </div>
+          <div class="w-slider-arrow-right">
+            <div class="w-icon-slider-right"></div>
+          </div>
+          <div class="w-slider-nav w-round"></div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  {% endunless %}
+
+
+  <!-- If extended exist -->
+  {% if page.pages.extended %}
+  <div class="toggle__extended">
+    <div class="toggle__show-extended" data-ix="toggle-show-extended">Visa hela caset</div>
+    <div class="toggle__extended__inner" data-ix="toggle-extended-inner">
+      <div class="w-row row in_extended">
+        <div class="w-col w-col-6">
+          {{page.pages.extended.body}}
+        </div>
+        <div class="w-col w-col-6 toggle__extended__images">
+          {% for asset in page.pages.extended.assets %}
+          <div class="toggle__extended__image">
+            <img src="{{asset.url}}" alt="">
+            <div class="typo1 typo--s in-extended__image">{{asset.meta.caption}}</div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+</div>
+
+{% endfor %}
+
+</div>

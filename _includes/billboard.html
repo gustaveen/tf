@@ -1,0 +1,14 @@
+<section class="billboard">
+    <div class="billboard__content">
+    {% for asset in assets %}
+        {% if asset.meta.type == 'featured' %}
+        <a href="{{ asset.meta.link }}" style="background-image: url('{{asset.url}}')" class="billboard__item billboard__item--we-effect">
+            <p class="billboard__byline">{{ asset.meta.byline }}</p>
+            <h3 class="billboard__title">{{ asset.meta.title }}</h3>
+        </a>
+        {% endif %}
+    {% endfor %}
+    </div>
+</section>
+
+

@@ -1,0 +1,30 @@
+
+  <div class="w-clearfix footer">
+    <div class="footer__menu">
+      <ul class="w-list-unstyled menu--secondary">
+        {% for page in site.html_pages %}
+          {% assign is_current = '' %}
+          {% if page.url == url %}
+            {% assign is_current = 'current' %}
+          {% endif %}
+          {% if page.is_secondary == false %}
+              <li class="menu--secondary__item">
+                  <a class="menu__link" href="{{page.url}}">{{page.title}}</a>
+              </li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+      <ul class="w-list-unstyled menu--secondary">
+        {% for page in site.html_pages %}
+        {% assign is_current = '' %}
+        {% if page.url == url %}
+          {% assign is_current = 'current' %}
+        {% endif %}
+        {% if page.is_secondary %}
+                <li class="menu--secondary__item">
+                    <a class="menu__link" href="{{page.url}}">{{page.title}}</a>
+                </li>
+            {% endif %}
+        {% endfor %}
+    </div>
+  </div>

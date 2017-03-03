@@ -1,0 +1,18 @@
+<header class="header">
+  <img class="header__logo" src="/assets/images/logo.svg">
+  <nav class="nav">
+    <ul class="w-list-unstyled">
+      {% for page in site.html_pages %}
+        {% assign is_current = '' %}
+        {% if page.url == url %}
+          {% assign is_current = 'current' %}
+        {% endif %}
+        {% if page.is_secondary == false %}
+            <li class="nav__item {{is_current}}"><a class="link--nostyle" href="{{page.url}}">{{page.title}}</a></li>
+        {% endif %}
+      {% endfor %}
+      <li class="nav__item"><a class="link--nostyle" href="http://career.frojd.se">Karriär</a></li>
+    </ul>
+  </nav>
+</header>
+

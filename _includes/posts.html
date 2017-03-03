@@ -1,0 +1,11 @@
+{% if site.posts %}
+  <div class="content__posts">
+    {% for post in site.posts %}
+      <div class="posts__post">
+        <h2 class="post__title"><a class="w-inline-block link" href="{{post.url}}">{{post.title}}</a></h2>
+        <div class="post__body">{{post.content}}</div>
+        <div class="post__date">{{post.date | date: "%Y-%m-%d"}}</div>
+      </div>
+    {% endfor %}
+  </div>
+{% endif %}
